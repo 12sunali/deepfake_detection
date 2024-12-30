@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1 class="title">Deepfake Detection</h1>
+            <div class="logout-container">
+                
+            </div>
+        </div>
+
+        <p class="subtitle">Upload an image or video to detect if it's Real or Fake.</p>
+
+        <div class="flex-container">
+            <!-- Image Upload Section -->
+            <div class="upload-section">
+                <h2 class="section-title">Upload an Image</h2>
+                <form id="image-form" method="POST" enctype="multipart/form-data" action="/predict_image">
+                    <input type="file" id="image-input" name="file" accept="image/*" required class="file-input">
+                    <button type="submit" class="btn">Predict</button>
+                </form>
+                <div id="image-preview" class="preview">
+                    <img id="uploaded-image" src="" alt="" style="display: none;">
+                    <div id="image-result" class="result"></div>
+                </div>
+            </div>
+
+            <!-- Video Upload Section -->
+            <div class="upload-section">
+                <h2 class="section-title">Stream a Video</h2>
+                <form id="stream-video-form" method="POST" enctype="multipart/form-data" action="/stream_video">
+                    <input type="file" id="stream-video-input" name="file" accept="video/*" required class="file-input">
+                    <button type="submit" class="btn">Stream</button>
+                </form>
+                <div id="stream-preview" class="preview">
+                    <video id="video-stream" autoplay controls style="display: none;"></video>
+                </div>
+            </div>
+        </div>
+        <form method="GET" action="/logout">
+            <button type="submit" class="btn logout-btn">Logout</button>
+        </form>
+    </div>
+    
+    <footer>
+        <p>Powered by Deepfake Detection &copy; 2024</p>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
